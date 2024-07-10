@@ -19,7 +19,7 @@ services:
       context: .
       dockerfile: test.Dockerfile
       args:
-        SNAPSHOT: ${SNAPSHOT:?err}
+        SNAPSHOT: ${SNAPSHOT:-test}
     depends_on:
       - test-db
       - test-redis

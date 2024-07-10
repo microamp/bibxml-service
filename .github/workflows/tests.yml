@@ -24,7 +24,6 @@ jobs:
       SERVICE_NAME: "IETF BibXML service"
       CONTACT_EMAIL: "test@email.com"
       DEBUG: 1
-      SNAPSHOT: "test"
     steps:
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
