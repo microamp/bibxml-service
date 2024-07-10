@@ -10,3 +10,4 @@ http_cache.sqlite
 .DS_Store
 .vscode
 .idea
+.mypy_cache
