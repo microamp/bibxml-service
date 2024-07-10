@@ -186,6 +186,12 @@ If on macOS or Linux, instead you can:
 3. Make sure your IDE resolves to Python within the virtualenv.
    In case of VS Code, use the “Select Python interpreter…” command.
 
+Alternatively, you can run it inside a running container.
+
+::
+
+   docker compose exec web ./run-mypy.sh
+
 .. note:: Some IDEs may require you to install mypy separately.
 
 .. note::
