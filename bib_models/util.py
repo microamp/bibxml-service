@@ -164,19 +164,6 @@ def normalize_relaxed(data: Dict[str, Any]) -> Dict[str, Any]:
     return data
 
 
-def to_plain_string(raw: str | Dict[str, Any]) -> str:
-    """
-    Given either a formatted string dict or a plain string,
-    returns a plain string (formatted string’s ``content`` key).
-    """
-    if isinstance(raw, str):
-        return raw
-    elif isinstance(raw, dict) and (content := raw.get('content', None)):
-        return str(content)
-    else:
-        return str(raw)
-
-
 def normalize_role(raw: str | Dict[str, Any]) -> Dict[str, Any]:
     """Takes a role that is possibly a string and returns a dict
     that complies with :class:`relaton.bibdata.Role` definition.
@@ -188,28 +175,6 @@ def normalize_role(raw: str | Dict[str, Any]) -> Dict[str, Any]:
     else:
         # Must be an invalid role
         return {'description': str(raw)}
-
-
-def to_formatted_string(raw: str | Dict[str, Any]) -> Dict[str, Any]:
-    if isinstance(raw, str):
-        return dict(content=raw)
-    elif isinstance(raw, dict) and isinstance(raw.get('content', None), str):
-        return raw
-    else:
-        return dict(content=str(raw))
-
-
-def ensure_formatted_string_content(fname: Dict[str, Any]) -> Dict[str, Any]:
-    """
-    Make sure given formatted string has non-empty ``content``.
-
-    This is relevant for, e.g., forenames, which per Relaton spec have optional
-    ``content``.
-    """
-    if not fname.get('content', None):
-        return dict(content='', **fname)
-    else:
-        return fname
 
 
 def normalize_version(raw: str) -> Dict[str, Any]:
